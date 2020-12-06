@@ -4,9 +4,12 @@ class UserCredentials {
 
   UserCredentials(this.login, this.senha);
 
+
   Map<String, dynamic> toJson() =>
       {
         'login': login,
         'senha': senha,
       };
+
+
 }

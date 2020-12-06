@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mobile/screens/Avaliacao/AvaliacaoPage2.dart';
+import 'package:mobile/screens/Avaliacao/Inicio.dart';
+import 'package:mobile/screens/Avaliacao/PostsPage.dart';
 import 'package:mobile/screens/proposta/proposta_screen.dart';
 
 import '../constants.dart';
@@ -57,9 +60,44 @@ class BaseComponent extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Text('Menu X'),
-              onTap: () {},
+              title: Text('Avaliações'),
+              onTap: () {
+              //  final destination = PostPage.routeName;
+                final destination = AvaliacaoPage.routeName;
+                bool isDestinationSameAsCurrent = false;
+
+                Navigator.popUntil(context, (route) {
+                  if (route.settings.name == destination) {
+                    isDestinationSameAsCurrent = true;
+                  }
+                  return true;
+                });
+
+                if (!isDestinationSameAsCurrent) {
+                  Navigator.pushNamed(context, destination);
+                }
+
+              },
             ),
+            ListTile(
+              title: Text('Relatório'),
+              onTap: () {
+                final destination = Inicio.routeName;
+                bool isDestinationSameAsCurrent = false;
+
+                Navigator.popUntil(context, (route) {
+                  if (route.settings.name == destination) {
+                    isDestinationSameAsCurrent = true;
+                  }
+                  return true;
+                });
+
+                if (!isDestinationSameAsCurrent) {
+                  Navigator.pushNamed(context, destination);
+                }
+
+              },
+            )
           ],
         ),
       ),

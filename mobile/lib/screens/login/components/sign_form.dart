@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile/components/custom_surfix_icon.dart';
 import 'package:mobile/components/form_error.dart';
 import 'package:mobile/http/auth_rest.dart';
+import 'package:mobile/models/UserID.dart';
 import 'package:mobile/screens/proposta/proposta_screen.dart';
 
 import '../../../components/default_button.dart';
@@ -59,9 +60,12 @@ class _SignFormState extends State<SignForm> {
                 final AuthRestClient _authRest = AuthRestClient();
                 final String login = _usernameController.text;
                 final String senha = _passwordController.text;
+
                 try {
                   print('Init login');
                   _authRest.realizarLogin(login, senha).then((ok) {
+                      UserId.login = login;
+                      print(UserId.login);
                     if (ok)
                       Navigator.pushNamed(context, PropostaScreen.routeName);
                     else {
